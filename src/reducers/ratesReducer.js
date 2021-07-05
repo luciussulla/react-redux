@@ -12,7 +12,7 @@ export const ratesReducer = (state=initialState, action) => {
   switch(action.type) {
     case "ADD": 
       console.log("ADD in reducer")
-      return state
+      return [...state, action.payload]
     case "EDIT":
       console.log("EDIT in reducer")
       return state.map(rate => {

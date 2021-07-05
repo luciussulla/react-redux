@@ -6,6 +6,7 @@ const EditRateForm = ({
   id,
   name,
   editRate, 
+  toggleFormCallback,
 }) => {
   const [newName, setNewName] = useState(name)
   const handleNameChange = (e)=> {
@@ -19,23 +20,20 @@ const EditRateForm = ({
     }
     editRate(newRateObj)
   }
-
+  
   return (
     <form onSubmit={handleSubmit}>
       <label>Name:  
         <input onChange={handleNameChange} type="text" value={newName} />
       </label>
-     
-      <button type="submit">Edit</button>
+      <button type="submit" onClick={toggleFormCallback}>Edit</button>
     </form>
   )
 }
 
-// edit form consumer goes here
 const mapActionToProps = ({
   editRate,
 })
 
 const EditRateFormConsumer = connect(null, mapActionToProps)(EditRateForm)
-
 export default EditRateFormConsumer

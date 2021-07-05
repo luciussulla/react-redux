@@ -2,13 +2,16 @@ import {useState} from 'react'
 import EditRateForm from '../forms/EditRateForm'
 
 const Element = ({rate})=> {
-  const [isVisible, showIsVisible] = useState(true)
-  const formOrButton = isVisible 
-  ? 
-    <EditRateForm id={rate.id} name={rate.name}/>
-  :
-    <button >Edit</button>
+  const [isVisible, setIsVisible] = useState(false)
+  const toggleFormCallback = ()=> {
+    setIsVisible(prev=>!prev)
+  }
 
+  const formOrButton = isVisible
+  ? 
+    <EditRateForm id={rate.id} name={rate.name} toggleFormCallback={toggleFormCallback}/>
+  :
+    <button onClick={toggleFormCallback}>Edit Rate</button>
 
   console.log(rate)
   return (
