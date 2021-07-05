@@ -1,21 +1,28 @@
-const initialState= [
-  {id:1, name: "bobo"}, 
-  {id:2, name: "lulu"}
+
+const initialState = [
+  {
+   id:1, name: "bobo", 
+  },
+  {
+   id:2, name: "weewee"
+  }
 ]
 
-const ratesReducer = (state=initialState, action)=> {
-    console.log(action.payload)
-    switch(action.type) {
-      case "ADD": 
-        console.log("Add called")
-      return [...state, action.payload]
-      case "EDIT": 
-        console.log("EDIT called")
+export const ratesReducer = (state=initialState, action) => {
+  switch(action.type) {
+    case "ADD": 
+      console.log("ADD in reducer")
       return state
-      default : 
-        console.log("This action is not defined")
+    case "EDIT":
+      console.log("EDIT in reducer")
+      return state.map(rate => {
+        if (rate.id === action.payload.id) {
+          return action.payload
+        } 
+        return rate
+      })
+    default: 
+      console.log("Default in reducer")
       return state
-    }
+  }
 }
-
-export default ratesReducer 

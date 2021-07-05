@@ -10,7 +10,6 @@ const App = ()=> {
       <>
         <Provider store={store}>
           <List/>
-          <NewRateForm/>
         </Provider>
       </>
     )

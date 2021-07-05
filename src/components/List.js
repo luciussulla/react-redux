@@ -1,16 +1,18 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import Element from './Element'
 
-const List = ({ratesStateFromStore})=> {
+const List = ({rates})=> {
+  console.log(rates)
   return(
     <ul>
-      {ratesStateFromStore.map(rate=><li key={rate.id}>{rate.name}</li>)}
+      {rates.map(rate => <Element key={rate.id} rate={rate}/>)}
     </ul>
   )
-} 
+}
 
-const connectStateToProps = store => ({
-  ratesStateFromStore: store.rates
-})  
+const connectStoreToProps = (store)=> ({
+  rates: store.rates
+})
 
-const ListConsumer = connect(connectStateToProps)(List)
-export default ListConsumer
+const ListConsumer = connect(connectStoreToProps) 
+export default ListConsumer(List)

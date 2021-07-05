@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import ratesReducer from "./ratesReducer";
+import {combineReducers} from 'redux'
+import { ratesReducer } from './ratesReducer'
 
 const rootReducer = combineReducers({
   rates: ratesReducer
