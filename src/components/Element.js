@@ -1,15 +1,15 @@
 import {useState} from 'react' 
-import EditRateForm from '../forms/EditRateForm'
+import RateForm from '../forms/RateForm'
 
 const Element = ({rate})=> {
   const [isVisible, setIsVisible] = useState(false)
   const toggleFormCallback = ()=> {
     setIsVisible(prev=>!prev)
   }
-
+  
   const formOrButton = isVisible
   ? 
-    <EditRateForm id={rate.id} name={rate.name} toggleFormCallback={toggleFormCallback}/>
+    <RateForm id={rate.id} name={rate.name} toggleFormCallback={toggleFormCallback}/>
   :
     <button onClick={toggleFormCallback}>Edit Rate</button>
 

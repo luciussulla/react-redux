@@ -2,7 +2,7 @@ import React from 'react'
 import {Provider} from 'react-redux'
 import store from './stores/store'
 import List from './components/List'
-import NewRateForm from './forms/NewRateForm'
+import RateForm from './forms/RateForm'
 
 const App = ()=> {
 
@@ -10,7 +10,7 @@ const App = ()=> {
       <>
         <Provider store={store}>
           <List/>
-          <NewRateForm/>
+          <RateForm/>
         </Provider>
       </>
     )
