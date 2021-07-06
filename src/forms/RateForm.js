@@ -1,18 +1,22 @@
 import {useState} from 'react'
-import {connect} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {editRate, addRate} from '../actions/rateActions'
+
+// editRate and addRate are both removed from props
+// connect function is not longer necessary when using useDispatch
 
 const RateForm = (
   {
     id,
     newName='',
-    editRate, 
-    addRate,
     toggleFormCallback,
   }
 )=> {
   console.log(id)
   const [name, setName] = useState(newName)
+
+  const dispatch = useDispatch()
+
   const handleName = (e)=> {
     setName(e.target.value)
   }
@@ -20,13 +24,13 @@ const RateForm = (
     e.preventDefault()
     
     if (id) {
-      editRate({id, name})
+      dispatch(editRate({id, name}))
       toggleFormCallback()
       console.log("edit part of the form has been called")
     } else {
       console.log('Set name should be cleared')
       setName('')
-      addRate({name})
+      dispatch(addRate({name}))
     } 
   }
 
@@ -38,10 +42,13 @@ const RateForm = (
   )
 }
 
-const connectDispatchToProps = ({
-  addRate, 
-  editRate
-})
 
-const RateFormConsumer = connect(null, connectDispatchToProps)(RateForm)
-export default RateFormConsumer
+// const connectDispatchToProps = ({
+//   addRate, 
+//   editRate
+// })
+
+// // const RateFormConsumer = connect(null, connectDispatchToProps)(RateForm)
+// // export default RateFormConsumer
+
+export default RateForm
