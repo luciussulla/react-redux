@@ -9,6 +9,7 @@ const initialState = [
 ]
 
 export const ratesReducer = (state=initialState, action) => {
+  console.log('Bedziemy tworzyc nowy stan aplikacji')
   switch(action.type) {
     case "ADD": 
       console.log("ADD in reducer")
