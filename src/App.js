@@ -4,6 +4,7 @@ import store from './stores/store'
 import List from './components/List'
 import RateForm from './forms/RateForm'
 
+
 const App = ()=> {
 
     return (
